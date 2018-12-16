@@ -55,8 +55,7 @@ public class Controller {
 
     public void generatePub() {
         try {
-            PrivateKey textAreaKey = MSGEncrypt.loadPrivateKey(rsaPrivText.getText());
-            RSAPrivateCrtKey privk = (RSAPrivateCrtKey) textAreaKey;
+            RSAPrivateCrtKey privk = (RSAPrivateCrtKey) privateKey;
             RSAPublicKeySpec publicKeySpec = new java.security.spec.RSAPublicKeySpec(privk.getModulus(), privk.getPublicExponent());
             KeyFactory keyFactory = KeyFactory.getInstance("RSA");
             PublicKey myPublicKey = keyFactory.generatePublic(publicKeySpec);
