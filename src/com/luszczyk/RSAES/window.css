@@ -1,0 +1,23 @@
+.root {
+}
+
+.label {
+    -fx-font-weight: bold;
+    -fx-font: 24 arial;
+}
+
+.small-label {
+    -fx-font-weight: bold;
+    -fx-font: 16 arial;
+}
+
+.custom-menu-button {
+    -fx-background-color: blue;
+    -fx-font: 16 arial;
+    -fx-text-fill: white;
+    -fx-border: none;
+}
+
+.custom-menu-button:hover {
+    -fx-background-color: lightblue;
+}

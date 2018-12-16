@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<HBox fx:id="hBox" spacing="8" stylesheets="/com/luszczyk/RSAES/window.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.luszczyk.RSAES.Controller">
+    <VBox minWidth="-Infinity" style="-fx-background-color: blue;">
+        <Button fx:id="menuKeys" text="Keys"/>
+        <Button fx:id="menuRSA" text="RSA" onAction="#rsaScene"/>
+        <Button fx:id="menuAES" text="AES" onAction="#aesScene"/>
+    </VBox>
+    <GridPane fx:id="gridPane">
+        <Label text="RSA" />
+        <Label fx:id="privLabel" text="Private Key" GridPane.rowIndex="1" />
+        <TextArea fx:id="rsaPrivText" maxHeight="150" maxWidth="-Infinity" wrapText="true" GridPane.rowIndex="2" />
+        <HBox GridPane.rowIndex="3">
+            <Button onAction="#generateRSA" text="Generate RSA private key"/>
+            <Button onAction="#loadRSA" text="Load RSA private key"/>
+        </HBox>
+        <Label fx:id="pubLabel" text="Public Key" GridPane.rowIndex="4" />
+        <TextArea fx:id="rsaPubText" maxHeight="150" wrapText="true" GridPane.rowIndex="5" />
+        <HBox GridPane.rowIndex="6">
+            <Button onAction="#generatePub" text="Generate RSA public key from private key"/>
+            <Button onAction="#loadPub" text="Load RSA public key"/>
+        </HBox>
+
+        <Label text="AES" GridPane.rowIndex="7" />
+        <TextArea fx:id="aesText" maxHeight="150" wrapText="true" GridPane.rowIndex="8" />
+        <HBox GridPane.rowIndex="9">
+            <Button onAction="#generateAES" text="Generate AES key"/>
+            <Button onAction="#loadAES" text="Load AES key"/>
+        </HBox>
+    </GridPane>
+</HBox>
