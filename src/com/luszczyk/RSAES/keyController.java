@@ -1,49 +1,31 @@
 package com.luszczyk.RSAES;
 
-import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.stage.Stage;
 
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
-import java.io.IOException;
 import java.security.*;
 import java.security.interfaces.RSAPrivateCrtKey;
 import java.security.spec.RSAPublicKeySpec;
 
-public class Controller {
+public class keyController extends RSAESController{
+    public Label privLabel;
     public TextArea rsaPrivText;
     public TextArea rsaPubText;
-    public Button menuKeys;
-    public Label privLabel;
     public Label pubLabel;
     public TextArea aesText;
-    public HBox hBox;
-    public GridPane gridPane;
-    public Button menuRSA;
-    public Button menuAES;
+
     private PrivateKey privateKey;
     private PublicKey publicKey;
     private SecretKey secretKey;
-    private Globals globals;
 
     public void initialize() {
-        gridPane.setPadding(new Insets(10));
-        menuKeys.getStyleClass().add("custom-menu-button");
-        menuRSA.getStyleClass().add("custom-menu-button");
-        menuAES.getStyleClass().add("custom-menu-button");
+        super.initialize();
         privLabel.getStyleClass().add("small-label");
         pubLabel.getStyleClass().add("small-label");
-        if(globals==null) globals = new Globals();
         if(globals.getKeyScene()==null) globals.setKeyScene(hBox.getScene());
-        if(globals.getController()==null) globals.setController(this);
+        if(globals.getKeyController()==null) globals.setKeyController(this);
     }
 
     public void generateRSA() {
@@ -102,23 +84,6 @@ public class Controller {
         }
     }
 
-    public void rsaScene() throws IOException {
-        Stage stage = (Stage) hBox.getScene().getWindow();
-        if(globals.getRsaScene()!=null){
-            globals.getRsaController().setData(globals);
-            stage.setScene(globals.getRsaScene());
-        } else {
-            FXMLLoader loader = new FXMLLoader();
-            Parent root = loader.load(getClass().getResource("rsaWindow.fxml").openStream());
-            rsaController rsaController = loader.getController();
-            Scene rsaScene = new Scene(root, 572, 450);
-            globals.setRsaScene(rsaScene);
-            globals.setRsaController(rsaController);
-            rsaController.setData(globals);
-            stage.setScene(rsaScene);
-        }
-    }
-
     void setData(Globals globals) {
         this.globals = globals;
         this.privateKey = globals.getPrivateKey();
@@ -127,22 +92,5 @@ public class Controller {
         if(privateKey!=null)rsaPrivText.setText(MSGEncrypt.keyToString(privateKey));
         if(publicKey!=null)rsaPubText.setText(MSGEncrypt.keyToString(publicKey));
         if(secretKey!=null)aesText.setText(MSGEncrypt.keyToString(secretKey));
-    }
-
-    public void aesScene() throws IOException {
-        Stage stage = (Stage) hBox.getScene().getWindow();
-        if(globals.getAesScene()!=null){
-            globals.getAesController().setData(globals);
-            stage.setScene(globals.getAesScene());
-        } else {
-            FXMLLoader loader = new FXMLLoader();
-            Parent root = loader.load(getClass().getResource("aesWindow.fxml").openStream());
-            aesController aesController = loader.getController();
-            Scene aesScene = new Scene(root, 572, 450);
-            globals.setAesScene(aesScene);
-            globals.setAesController(aesController);
-            aesController.setData(globals);
-            stage.setScene(aesScene);
-        }
     }
 }

@@ -13,7 +13,7 @@ class Globals {
     private Scene keyScene;
     private Scene rsaScene;
     private Scene aesScene;
-    private Controller controller;
+    private keyController keyController;
     private rsaController rsaController;
     private aesController aesController;
 
@@ -65,8 +65,8 @@ class Globals {
         return aesScene;
     }
 
-    void setController(Controller controller) {
-        this.controller = controller;
+    void setKeyController(keyController keyController) {
+        this.keyController = keyController;
     }
 
     void setRsaController(com.luszczyk.RSAES.rsaController rsaController) {
@@ -81,8 +81,8 @@ class Globals {
         return aesController;
     }
 
-    Controller getController() {
-        return controller;
+    keyController getKeyController() {
+        return keyController;
     }
 
     com.luszczyk.RSAES.rsaController getRsaController() {
