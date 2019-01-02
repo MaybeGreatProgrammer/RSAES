@@ -17,6 +17,8 @@ public class RSAESController {
     public Button menuKeys;
     public Button menuRSA;
     public Button menuAES;
+    public Button menuSig;
+    public Button menuVer;
     Globals globals;
 
     void initialize() {
@@ -24,6 +26,8 @@ public class RSAESController {
         menuKeys.getStyleClass().add("custom-menu-button");
         menuRSA.getStyleClass().add("custom-menu-button");
         menuAES.getStyleClass().add("custom-menu-button");
+        menuSig.getStyleClass().add("custom-menu-button");
+        menuVer.getStyleClass().add("custom-menu-button");
         if(globals==null) globals = new Globals();
     }
 
@@ -75,6 +79,40 @@ public class RSAESController {
             globals.setAesController(aesController);
             aesController.setData(globals);
             stage.setScene(aesScene);
+        }
+    }
+
+    public void signScene() throws IOException{
+        Stage stage = (Stage) hBox.getScene().getWindow();
+        if(globals.getSignScene()!=null){
+            globals.getSignatureController().setData(globals);
+            stage.setScene(globals.getSignScene());
+        } else {
+            FXMLLoader loader = new FXMLLoader();
+            Parent root = loader.load(getClass().getResource("signatureWindow.fxml").openStream());
+            signatureController signatureController = loader.getController();
+            Scene signatureScene = new Scene(root, 572, 425);
+            globals.setSignScene(signatureScene);
+            globals.setSignatureController(signatureController);
+            signatureController.setData(globals);
+            stage.setScene(signatureScene);
+        }
+    }
+
+    public void verifyScene() throws IOException{
+        Stage stage = (Stage) hBox.getScene().getWindow();
+        if(globals.getVerifyScene()!=null){
+            globals.getVerifyController().setData(globals);
+            stage.setScene(globals.getVerifyScene());
+        } else {
+            FXMLLoader loader = new FXMLLoader();
+            Parent root = loader.load(getClass().getResource("verifyWindow.fxml").openStream());
+            verifyController verifyController = loader.getController();
+            Scene verifyScene = new Scene(root, 572, 425);
+            globals.setVerifyScene(verifyScene);
+            globals.setVerifyController(verifyController);
+            verifyController.setData(globals);
+            stage.setScene(verifyScene);
         }
     }
 }

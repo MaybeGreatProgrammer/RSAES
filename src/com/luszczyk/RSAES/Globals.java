@@ -13,9 +13,13 @@ class Globals {
     private Scene keyScene;
     private Scene rsaScene;
     private Scene aesScene;
+    private Scene signScene;
+    private Scene verifyScene;
     private keyController keyController;
     private rsaController rsaController;
     private aesController aesController;
+    private signatureController signatureController;
+    private verifyController verifyController;
 
     void setPrivateKey(PrivateKey privateKey) {
         this.privateKey = privateKey;
@@ -53,6 +57,14 @@ class Globals {
         this.aesScene = aesScene;
     }
 
+    void setSignScene(Scene signScene) {
+        this.signScene = signScene;
+    }
+
+    void setVerifyScene(Scene verifyScene) {
+        this.verifyScene = verifyScene;
+    }
+
     Scene getKeyScene() {
         return keyScene;
     }
@@ -65,19 +77,35 @@ class Globals {
         return aesScene;
     }
 
+    Scene getSignScene() {
+        return signScene;
+    }
+
+    Scene getVerifyScene() {
+        return verifyScene;
+    }
+
     void setKeyController(keyController keyController) {
         this.keyController = keyController;
     }
 
-    void setRsaController(com.luszczyk.RSAES.rsaController rsaController) {
+    void setRsaController(rsaController rsaController) {
         this.rsaController = rsaController;
     }
 
-    void setAesController(com.luszczyk.RSAES.aesController aesController) {
+    void setAesController(aesController aesController) {
         this.aesController = aesController;
     }
 
-    com.luszczyk.RSAES.aesController getAesController() {
+    void setSignatureController(signatureController signatureController) {
+        this.signatureController = signatureController;
+    }
+
+    void setVerifyController(verifyController verifyController) {
+        this.verifyController = verifyController;
+    }
+
+    aesController getAesController() {
         return aesController;
     }
 
@@ -85,7 +113,15 @@ class Globals {
         return keyController;
     }
 
-    com.luszczyk.RSAES.rsaController getRsaController() {
+    rsaController getRsaController() {
         return rsaController;
+    }
+
+    signatureController getSignatureController() {
+        return signatureController;
+    }
+
+    verifyController getVerifyController() {
+        return verifyController;
     }
 }

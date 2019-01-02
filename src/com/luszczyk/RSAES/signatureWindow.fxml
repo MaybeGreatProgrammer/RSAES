@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<HBox fx:id="hBox" spacing="8" stylesheets="/com/luszczyk/RSAES/window.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.luszczyk.RSAES.signatureController">
+    <VBox minWidth="-Infinity" style="-fx-background-color: blue;">
+        <Button fx:id="menuKeys" text="Keys" onAction="#keyScene"/>
+        <Button fx:id="menuRSA" text="RSA" onAction="#rsaScene"/>
+        <Button fx:id="menuAES" text="AES" onAction="#aesScene"/>
+        <Button fx:id="menuSig" text="Sign"/>
+        <Button fx:id="menuVer" text="Verify" onAction="#verifyScene"/>
+    </VBox>
+    <GridPane fx:id="gridPane">
+        <Label text="Sign"/>
+        <Label text="Text" GridPane.rowIndex="1" fx:id="textLabel"/>
+        <TextArea fx:id="plainText" maxHeight="150" maxWidth="-Infinity" wrapText="true" GridPane.rowIndex="2" />
+        <Button onAction="#sign" text="Sign" GridPane.rowIndex="3"/>
+        <Label text="Signature" GridPane.rowIndex="4" fx:id="signLabel"/>
+        <TextArea fx:id="signatureText" maxHeight="150" maxWidth="-Infinity" wrapText="true" GridPane.rowIndex="5"/>
+    </GridPane>
+</HBox>

@@ -21,3 +21,15 @@
 .custom-menu-button:hover {
     -fx-background-color: lightblue;
 }
+
+.verify-ok {
+    -fx-font-weight: bold;
+    -fx-font: 16 arial;
+    -fx-text-fill: green;
+}
+
+.verify-bad {
+    -fx-font-weight: bold;
+    -fx-font: 16 arial;
+    -fx-text-fill: red;
+}
