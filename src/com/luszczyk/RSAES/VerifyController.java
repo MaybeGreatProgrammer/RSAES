@@ -3,28 +3,23 @@ package com.luszczyk.RSAES;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 
-import java.security.PublicKey;
-
-public class verifyController extends RSAESController{
+public class VerifyController extends RSAESController{
 
     public Label textLabel;
     public TextArea plainText;
     public Label signLabel;
     public TextArea signatureText;
     public Label verResult;
-    private PublicKey publicKey;
 
     public void initialize() {
         super.initialize();
         textLabel.getStyleClass().add("small-label");
         signLabel.getStyleClass().add("small-label");
         verResult.getStyleClass().add("small-label");
-        if(globals.getVerifyScene()==null) globals.setVerifyScene(hBox.getScene());
-        if(globals.getVerifyController()==null) globals.setVerifyController(this);
     }
 
     public void verify() {
-        if(publicKey==null) {
+        if(appState.getPublicKey()==null) {
             verResult.setText("ERROR: No public key provided");
             verResult.getStyleClass().clear();
             verResult.getStyleClass().add("verify-bad");
@@ -33,7 +28,7 @@ public class verifyController extends RSAESController{
         String pText = plainText.getText();
         String sigText = signatureText.getText();
         try {
-            Boolean verified = MSGEncrypt.verify(pText, sigText, publicKey);
+            Boolean verified = MSGEncrypt.verify(pText, sigText, appState.getPublicKey());
             if(verified){
                 verResult.setText("Signature Correct");
                 verResult.getStyleClass().clear();
@@ -48,10 +43,5 @@ public class verifyController extends RSAESController{
             verResult.getStyleClass().clear();
             verResult.getStyleClass().add("verify-bad");
         }
-    }
-
-    void setData(Globals globals) {
-        this.globals = globals;
-        this.publicKey = globals.getPublicKey();
     }
 }

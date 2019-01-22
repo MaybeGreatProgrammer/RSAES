@@ -6,7 +6,9 @@ import javax.crypto.SecretKey;
 import java.security.PrivateKey;
 import java.security.PublicKey;
 
-class Globals {
+class AppState {
+    private static final AppState appState = new AppState();
+
     private PrivateKey privateKey;
     private PublicKey publicKey;
     private SecretKey secretKey;
@@ -15,11 +17,18 @@ class Globals {
     private Scene aesScene;
     private Scene signScene;
     private Scene verifyScene;
-    private keyController keyController;
-    private rsaController rsaController;
-    private aesController aesController;
-    private signatureController signatureController;
-    private verifyController verifyController;
+    private KeyController keyController;
+    private RSAController rsaController;
+    private AESController aesController;
+    private SignatureController signatureController;
+    private VerifyController verifyController;
+
+    private AppState() {
+    }
+
+    static AppState getAppState() {
+        return appState;
+    }
 
     void setPrivateKey(PrivateKey privateKey) {
         this.privateKey = privateKey;
@@ -85,43 +94,43 @@ class Globals {
         return verifyScene;
     }
 
-    void setKeyController(keyController keyController) {
+    void setKeyController(KeyController keyController) {
         this.keyController = keyController;
     }
 
-    void setRsaController(rsaController rsaController) {
+    void setRsaController(RSAController rsaController) {
         this.rsaController = rsaController;
     }
 
-    void setAesController(aesController aesController) {
+    void setAesController(AESController aesController) {
         this.aesController = aesController;
     }
 
-    void setSignatureController(signatureController signatureController) {
+    void setSignatureController(SignatureController signatureController) {
         this.signatureController = signatureController;
     }
 
-    void setVerifyController(verifyController verifyController) {
+    void setVerifyController(VerifyController verifyController) {
         this.verifyController = verifyController;
     }
 
-    aesController getAesController() {
+    AESController getAesController() {
         return aesController;
     }
 
-    keyController getKeyController() {
+    KeyController getKeyController() {
         return keyController;
     }
 
-    rsaController getRsaController() {
+    RSAController getRsaController() {
         return rsaController;
     }
 
-    signatureController getSignatureController() {
+    SignatureController getSignatureController() {
         return signatureController;
     }
 
-    verifyController getVerifyController() {
+    VerifyController getVerifyController() {
         return verifyController;
     }
 }

@@ -19,7 +19,7 @@ public class RSAESController {
     public Button menuAES;
     public Button menuSig;
     public Button menuVer;
-    Globals globals;
+    AppState appState = AppState.getAppState();
 
     void initialize() {
         gridPane.setPadding(new Insets(10));
@@ -28,90 +28,79 @@ public class RSAESController {
         menuAES.getStyleClass().add("custom-menu-button");
         menuSig.getStyleClass().add("custom-menu-button");
         menuVer.getStyleClass().add("custom-menu-button");
-        if(globals==null) globals = new Globals();
     }
 
     public void keyScene() throws IOException {
         Stage stage = (Stage) hBox.getScene().getWindow();
-        if(globals.getKeyScene()!=null){
-            globals.getKeyController().setData(globals);
-            stage.setScene(globals.getKeyScene());
+        if(appState.getKeyScene()!=null){
+            stage.setScene(appState.getKeyScene());
         } else {
             FXMLLoader loader = new FXMLLoader();
             Parent root = loader.load(getClass().getResource("window.fxml").openStream());
-            keyController keyController = loader.getController();
+            KeyController keyController = loader.getController();
             Scene keyScene = new Scene(root, 572, 650);
-            globals.setKeyScene(keyScene);
-            globals.setKeyController(keyController);
-            keyController.setData(globals);
+            appState.setKeyScene(keyScene);
+            appState.setKeyController(keyController);
             stage.setScene(keyScene);
         }
     }
 
     public void rsaScene() throws IOException {
         Stage stage = (Stage) hBox.getScene().getWindow();
-        if(globals.getRsaScene()!=null){
-            globals.getRsaController().setData(globals);
-            stage.setScene(globals.getRsaScene());
+        if(appState.getRsaScene()!=null){
+            stage.setScene(appState.getRsaScene());
         } else {
             FXMLLoader loader = new FXMLLoader();
             Parent root = loader.load(getClass().getResource("rsaWindow.fxml").openStream());
-            rsaController rsaController = loader.getController();
+            RSAController rsaController = loader.getController();
             Scene rsaScene = new Scene(root, 572, 450);
-            globals.setRsaScene(rsaScene);
-            globals.setRsaController(rsaController);
-            rsaController.setData(globals);
+            appState.setRsaScene(rsaScene);
+            appState.setRsaController(rsaController);
             stage.setScene(rsaScene);
         }
     }
 
     public void aesScene() throws IOException {
         Stage stage = (Stage) hBox.getScene().getWindow();
-        if(globals.getAesScene()!=null){
-            globals.getAesController().setData(globals);
-            stage.setScene(globals.getAesScene());
+        if(appState.getAesScene()!=null){
+            stage.setScene(appState.getAesScene());
         } else {
             FXMLLoader loader = new FXMLLoader();
             Parent root = loader.load(getClass().getResource("aesWindow.fxml").openStream());
-            aesController aesController = loader.getController();
+            AESController aesController = loader.getController();
             Scene aesScene = new Scene(root, 572, 450);
-            globals.setAesScene(aesScene);
-            globals.setAesController(aesController);
-            aesController.setData(globals);
+            appState.setAesScene(aesScene);
+            appState.setAesController(aesController);
             stage.setScene(aesScene);
         }
     }
 
     public void signScene() throws IOException{
         Stage stage = (Stage) hBox.getScene().getWindow();
-        if(globals.getSignScene()!=null){
-            globals.getSignatureController().setData(globals);
-            stage.setScene(globals.getSignScene());
+        if(appState.getSignScene()!=null){
+            stage.setScene(appState.getSignScene());
         } else {
             FXMLLoader loader = new FXMLLoader();
             Parent root = loader.load(getClass().getResource("signatureWindow.fxml").openStream());
-            signatureController signatureController = loader.getController();
+            SignatureController signatureController = loader.getController();
             Scene signatureScene = new Scene(root, 572, 425);
-            globals.setSignScene(signatureScene);
-            globals.setSignatureController(signatureController);
-            signatureController.setData(globals);
+            appState.setSignScene(signatureScene);
+            appState.setSignatureController(signatureController);
             stage.setScene(signatureScene);
         }
     }
 
     public void verifyScene() throws IOException{
         Stage stage = (Stage) hBox.getScene().getWindow();
-        if(globals.getVerifyScene()!=null){
-            globals.getVerifyController().setData(globals);
-            stage.setScene(globals.getVerifyScene());
+        if(appState.getVerifyScene()!=null){
+            stage.setScene(appState.getVerifyScene());
         } else {
             FXMLLoader loader = new FXMLLoader();
             Parent root = loader.load(getClass().getResource("verifyWindow.fxml").openStream());
-            verifyController verifyController = loader.getController();
+            VerifyController verifyController = loader.getController();
             Scene verifyScene = new Scene(root, 572, 425);
-            globals.setVerifyScene(verifyScene);
-            globals.setVerifyController(verifyController);
-            verifyController.setData(globals);
+            appState.setVerifyScene(verifyScene);
+            appState.setVerifyController(verifyController);
             stage.setScene(verifyScene);
         }
     }

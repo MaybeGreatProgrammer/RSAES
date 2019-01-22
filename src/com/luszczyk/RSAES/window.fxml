@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<HBox fx:id="hBox" spacing="8" stylesheets="/com/luszczyk/RSAES/window.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.luszczyk.RSAES.keyController">
+<HBox fx:id="hBox" spacing="8" stylesheets="/com/luszczyk/RSAES/window.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.luszczyk.RSAES.KeyController">
     <VBox minWidth="-Infinity" style="-fx-background-color: blue;">
         <Button fx:id="menuKeys" text="Keys"/>
         <Button fx:id="menuRSA" text="RSA" onAction="#rsaScene"/>

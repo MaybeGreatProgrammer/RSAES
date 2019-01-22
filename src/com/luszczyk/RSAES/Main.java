@@ -14,7 +14,9 @@ public class Main extends Application {
         Parent keyScene = FXMLLoader.load(getClass().getResource("window.fxml"));
         primaryStage.setTitle("RSAES");
         primaryStage.setResizable(false);
-        primaryStage.setScene(new Scene(keyScene, 572, 650));
+        Scene scene = new Scene(keyScene, 572, 650);
+        AppState.getAppState().setKeyScene(scene);
+        primaryStage.setScene(scene);
         primaryStage.show();
     }
 

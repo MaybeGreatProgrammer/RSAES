@@ -88,7 +88,7 @@ class MSGEncrypt {
         return new String(bytePlainText);
     }
 
-    public static String sign(String plainText, PrivateKey privateKey) throws Exception {
+    static String sign(String plainText, PrivateKey privateKey) throws Exception {
         Signature privateSignature = Signature.getInstance("SHA256withRSA");
         privateSignature.initSign(privateKey);
         privateSignature.update(plainText.getBytes(UTF_8));
@@ -98,7 +98,7 @@ class MSGEncrypt {
         return Base64.getEncoder().encodeToString(signature);
     }
 
-    public static boolean verify(String plainText, String signature, PublicKey publicKey) throws Exception {
+    static boolean verify(String plainText, String signature, PublicKey publicKey) throws Exception {
         Signature publicSignature = Signature.getInstance("SHA256withRSA");
         publicSignature.initVerify(publicKey);
         publicSignature.update(plainText.getBytes(UTF_8));
